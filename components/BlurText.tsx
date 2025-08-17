@@ -2,7 +2,18 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
-const getDirectionOffset = (direction) => {
+type Direction = 'top' | 'bottom' | 'left' | 'right';
+
+interface BlurTextProps {
+  texts: string[];
+  animateBy?: 'words' | 'letters'; // currently only 'words' supported in your code, but added letters for future
+  direction?: Direction;
+  className?: string;
+  duration?: number;           // seconds text stays visible
+  transitionDuration?: number; // seconds animation duration
+}
+
+const getDirectionOffset = (direction: Direction) => {
   switch (direction) {
     case 'top':
       return { y: -20 };
@@ -17,19 +28,20 @@ const getDirectionOffset = (direction) => {
   }
 };
 
-const BlurText = ({
+const BlurText: React.FC<BlurTextProps> = ({
   texts = [],
   animateBy = 'words',
   direction = 'top',
   className = '',
-  duration = 2,           // seconds text stays visible
-  transitionDuration = 1, // seconds animation duration
+  duration = 2,
+  transitionDuration = 1,
 }) => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const animateIn = () => {
-    const items = containerRef.current.querySelectorAll('.blur-item');
+    if (!containerRef.current) return;
+    const items = containerRef.current.querySelectorAll<HTMLElement>('.blur-item');
     gsap.fromTo(
       items,
       {
@@ -49,8 +61,9 @@ const BlurText = ({
     );
   };
 
-  const animateOut = (onComplete) => {
-    const items = containerRef.current.querySelectorAll('.blur-item');
+  const animateOut = (onComplete: () => void) => {
+    if (!containerRef.current) return;
+    const items = containerRef.current.querySelectorAll<HTMLElement>('.blur-item');
     gsap.to(items, {
       opacity: 0,
       filter: 'blur(10px)',
@@ -62,6 +75,7 @@ const BlurText = ({
   };
 
   useEffect(() => {
+    if (texts.length === 0) return; 
     animateIn();
 
     const timer = setTimeout(() => {
@@ -71,7 +85,7 @@ const BlurText = ({
     }, duration * 1000);
 
     return () => clearTimeout(timer);
-  }, [currentIndex, duration, transitionDuration, texts.length]);
+  }, [currentIndex, duration, transitionDuration, texts]);
 
   return (
     <div ref={containerRef} className={`inline-block ${className}`}>

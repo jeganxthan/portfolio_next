@@ -2,8 +2,8 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
-const PlusLine = () => {
-  const line = useRef(null);
+const PlusLine: React.FC = () => {
+  const line = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -15,6 +15,7 @@ const PlusLine = () => {
         );
       }
     }, 2000);
+
     return () => clearTimeout(timer);
   }, []);
 

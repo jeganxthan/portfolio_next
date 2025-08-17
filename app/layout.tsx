@@ -1,5 +1,5 @@
-import { IBM_Plex_Mono } from 'next/font/google';
-import { Arimo } from 'next/font/google';
+import React, { ReactNode } from 'react';
+import { IBM_Plex_Mono, Arimo } from 'next/font/google';
 import './globals.css';
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -14,7 +14,16 @@ const arimo = Arimo({
   variable: '--font-arimo',
 });
 
-export default function RootLayout({ children }) {
+export const metadata = {
+  title: 'PORTFOLIO',
+  description: 'fullstack portfolio!!',
+};
+
+interface RootLayoutProps {
+  children: ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" style={{ overflowX: 'hidden' }}>
       <body

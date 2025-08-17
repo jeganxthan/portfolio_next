@@ -13,6 +13,7 @@ const images = [
     "./ts.svg",
     "./java.svg",
     "./react.svg",
+    "./gsap.png",
 ].map((image) => ({
     id: crypto.randomUUID(),
     image

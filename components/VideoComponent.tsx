@@ -1,9 +1,8 @@
 'use client'
 import React, { useRef } from 'react';
-import { useMediaQuery } from 'react-responsive';
 
-const VideoComponent = () => {
-  const videoRef = useRef(null);
+const VideoComponent: React.FC = () => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const handleVideoEnd = () => {
     if (videoRef.current) {

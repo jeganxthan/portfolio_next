@@ -2,7 +2,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
-const LoadingCounter = ({ onComplete }) => {
+interface LoadingCounterProps {
+  onComplete?: () => void;
+}
+
+const LoadingCounter: React.FC<LoadingCounterProps> = ({ onComplete }) => {
   const [count, setCount] = useState(1);
   const countRef = useRef({ value: 1 });
 
