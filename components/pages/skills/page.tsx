@@ -1,7 +1,13 @@
+import React from "react";
 import { Banner } from "../../Banner";
 import "./styles.css";
 
-const images = [
+interface ImageType {
+    id: string;
+    image: string;
+}
+
+const images: ImageType[] = [
     "./vite.png",
     "./tailwind.svg",
     "./next.svg",
@@ -19,7 +25,7 @@ const images = [
     image
 }));
 
-export default function App() {
+const Skills: React.FC = () => {
     return (
         <div className="py-6">
             <h1 className="text-[#302e2e] font-medium text-xs p-6">SKILLS</h1>
@@ -28,4 +34,6 @@ export default function App() {
             </div>
         </div>
     );
-}
+};
+
+export default Skills;
