@@ -4,6 +4,7 @@ import About from '../components/pages/about/page';
 import Hero from '../components/pages/hero/page';
 import PlusLine from '../components/PlusLine';
 import Skills from '../components/pages/skills/page';
+import Footer from '../components/pages/footer/page';
 
 const Page = () => {
   return (
@@ -17,6 +18,7 @@ const Page = () => {
       <Skills />
       <PlusLine />
       <Projects />
+      <Footer />
     </div>
   );
 };
