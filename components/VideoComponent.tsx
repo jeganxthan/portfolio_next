@@ -15,7 +15,7 @@ const VideoComponent: React.FC = () => {
     <div className="flex justify-center md:w-full md:ml-0 md:h-full items-center w-[600px] h-[600px] ml-[40px] md:mt-0 mt-[-200px]">
       <video
         ref={videoRef}
-        width="75%"
+        width="100%"
         autoPlay
         muted
         onEnded={handleVideoEnd}

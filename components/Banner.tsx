@@ -20,7 +20,7 @@ const Banner: React.FC<BannerProps> = ({ images, speed = 8000 }) => {
             style={{ ["--speed" as any]: `${speed}ms` }}
           >
             {images.map(({ id, image }) => (
-              <div className="image" key={id}>
+              <div className="w-full h-auto md:w-auto md:h-auto max-w-full" key={id}>
                 <img src={image} alt={id.toString()} />
               </div>
             ))}

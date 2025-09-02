@@ -8,7 +8,7 @@ import Footer from '../components/pages/footer/page';
 
 const Page = () => {
   return (
-    <div>
+    <div className='selection:bg-orange-300'>
       <Hero />
       <div className="mt-[-17px]">
         <PlusLine />
@@ -18,7 +18,7 @@ const Page = () => {
       <Skills />
       <PlusLine />
       <Projects />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

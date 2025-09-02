@@ -21,8 +21,13 @@ body {
 
 html, body {
   overflow-x: hidden; /* disables horizontal scrolling */
-  width: 100vw;       /* prevent width from exceeding viewport */
+  width: 100%;       /* prevent width from exceeding viewport */
   margin: 0;          /* remove default margin */
   padding: 0;  
   scroll-behavior: smooth;
+}
+
+
+.project{
+  width: 100%;      
 }

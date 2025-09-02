@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useRef, useState, MutableRefObject } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import VideoComponent from '../../VideoComponent';
 import PlusLine from '../../PlusLine';
@@ -11,7 +11,6 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const Hero: React.FC = () => {
-  // Refs typed as MutableRefObject with correct element types
   const linksRef = useRef<(HTMLSpanElement | null)[]>([]);
   const navbarRef = useRef<HTMLDivElement | null>(null);
   const navbarRef1 = useRef<HTMLDivElement | null>(null);
@@ -19,10 +18,8 @@ const Hero: React.FC = () => {
   const blurText = useRef<HTMLHeadingElement | null>(null);
   const [loadingComplete, setLoadingComplete] = useState(false);
 
-  // Reset linksRef on every render - safer to do in useEffect but as per your original logic:
   linksRef.current = [];
 
-  // Mouse event handlers typed as React.MouseEvent handlers
   const handleMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
     gsap.to(e.currentTarget, { duration: 0.3, filter: 'blur(5px)' });
   };
@@ -99,13 +96,11 @@ const Hero: React.FC = () => {
     }
 
     return () => {
-      // Clean up on unmount
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
     };
   }, [loadingComplete]);
 
-  // Scroll handler typed properly
   const handleScroll = (e: React.MouseEvent<HTMLSpanElement>) => {
     e.preventDefault();
     const aboutSection = document.getElementById('about');
@@ -122,11 +117,11 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div className="relative h-screen video-text-wrapper overflow-hidden" id="home">
+    <div className="relative h-full video-text-wrapper overflow-hidden" id="home">
       <div className="navbar">
-        <div className="flex text-xs justify-between relative flex-row md:pt-4 md:px-6">
+        <div className="flex text-xs justify-between relative flex-row md:pt-4 md:px-6 text-slate-700 ">
           <div className="space-x-6 hidden md:flex" ref={navbarRef1} style={{ opacity: 0 }}>
-            <a href="#home" className="hover:text-gray-400">
+            <a href="#home" className="hover:text-gray-400 font-semibold">
               <span
                 ref={el => {
                   linksRef.current[0] = el;
@@ -138,7 +133,7 @@ const Hero: React.FC = () => {
                 HOME
               </span>
             </a>
-            <a href="#about" className="hover:text-gray-400">
+            <a href="#about" className="hover:text-gray-400 font-semibold">
               <span
                 ref={el => {
                   linksRef.current[1] = el;
@@ -153,10 +148,10 @@ const Hero: React.FC = () => {
             </a>
           </div>
 
-          <h2 className="text-center">JEGANATHAN</h2>
+          <h2 className="text-center md:text-left w-full md:w-auto md:mt-0 mt-6 text-sm tracking-widest font-medium">JEGANATHAN</h2>
 
           <div className="space-x-6 hidden md:flex" ref={navbarRef} style={{ opacity: 0 }}>
-            <a href="#services" className="hover:text-gray-400">
+            <a href="#services" className="hover:text-gray-400 font-semibold">
               <span
                 ref={el => {
                   linksRef.current[2] = el;
@@ -169,7 +164,7 @@ const Hero: React.FC = () => {
                 PROJECTS
               </span>
             </a>
-            <a href="#contact" className="hover:text-gray-400">
+            <a href="#contact" className="hover:text-gray-400 font-semibold">
               <span
                 ref={el => {
                   linksRef.current[3] = el;
@@ -189,17 +184,21 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="flex flex-col md:flex-row justify-center items-center w-full z-0 min-h-[600px]">
-        <h2 className="flex md:text-2xl text-slate-600 md:p-8" ref={greenBoxRef} style={{ opacity: 0 }}>
-          <BlurText
-            texts={['WEB DEVELOPER', 'MERN DEVELOPER', 'REACT ENGINEER']}
-            animateBy="words"
-            direction="top"
-            className="text-2xl mb-8 text-slate-700 whitespace-pre"
-          />
-        </h2>
-        <div className="flex md:mt-[-120px] video">
-          <VideoComponent />
-        </div>
+        <h2 
+    className="flex md:text-2xl text-slate-600 md:p-8" 
+    ref={greenBoxRef} 
+    style={{ opacity: 0, position: 'relative', zIndex: 10 }}
+  >
+    <BlurText
+      texts={['WEB DEVELOPER', 'MERN DEVELOPER', 'REACT ENGINEER']}
+      animateBy="words"
+      direction="top"
+      className="text-2xl mb-8 text-slate-700 whitespace-pre"
+    />
+  </h2>
+  <div className="flex mt-[200px] md:mt-[-180px] video" style={{ position: 'relative', zIndex: 1 }}>
+    <VideoComponent />
+  </div>
         <h2 className="text-xl md:text-2xl text-slate-600 mt-4 md:p-8" ref={blurText} style={{ opacity: 0 }}>
           DEVELOPER
         </h2>
