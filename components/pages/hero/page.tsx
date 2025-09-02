@@ -204,7 +204,7 @@ const Hero: React.FC = () => {
         </h2>
 
         {!loadingComplete && (
-          <div className="absolute top-[500px] w-full flex justify-center">
+          <div className="absolute top-[500px] w-full flex justify-center mt-[180px]">
             <LoadingCounter onComplete={() => setLoadingComplete(true)} />
           </div>
         )}

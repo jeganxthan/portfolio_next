@@ -10,26 +10,29 @@ interface ImageType {
     image: string;
 }
 
-const images: ImageType[] = [
-    "./vite.png",
-    "./tailwind.svg",
-    "./next.svg",
-    "./node.svg",
-    "./express.svg",
-    "./MongoDB.svg",
-    "./python.svg",
-    "./java.svg",
-    "./react.svg",
-    "./firebase.svg",
-    "./html.svg",
-    "./css.svg",
-    "./js.svg",
-    "./ts.svg",
-    "./gsap.png",
-].map((image) => ({
-    id: crypto.randomUUID(),
-    image
+const imageFilenames = [
+    "vite.png",
+    "tailwind.svg",
+    "next.svg",
+    "node.svg",
+    "express.svg",
+    "MongoDB.svg",
+    "python.svg",
+    "java.svg",
+    "react.svg",
+    "firebase.svg",
+    "html.svg",
+    "css.svg",
+    "js.svg",
+    "ts.svg",
+    "gsap.png",
+];
+
+const images: ImageType[] = imageFilenames.map((filename) => ({
+    id: filename, // <-- stable ID!
+    image: `/${filename}`, // make sure paths are public-friendly
 }));
+
 
 const Skills: React.FC = () => {
     const [open, setOpen] = useState(false);
