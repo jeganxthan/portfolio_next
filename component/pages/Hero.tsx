@@ -150,7 +150,7 @@ const handleScroll = (e: React.MouseEvent<HTMLSpanElement>, sectionId: string) =
             </a>
           </div>
 
-          <h2 className="text-center md:text-left w-full text-xl md:w-auto md:mt-0 mt-6 tracking-widest font-medium p-4">JEGANATHAN</h2>
+          <h2 className="text-center md:text-left w-full text-xl md:w-auto md:mt-0 mt-6 tracking-widest font-medium ">JEGANATHAN</h2>
 
           <div className="space-x-8 hidden md:flex" ref={navbarRef} style={{ opacity: 0 }}>
             <a href="#projects" className="hover:text-gray-400 text-sm font-semibold">
