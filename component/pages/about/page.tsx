@@ -1,123 +1,75 @@
-'use client'
-
+"use client"
 import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import PlusLine from '@/component/PlusLine';
+import flower from '@/public/flower.webp';
+import Image from 'next/image';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Lines of text split manually
-const headingLines = [
-  "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0I'm a MERN stack developer",
-  "specializing in building full-stack web",
-  "  applications."
-];
-
-const paragraphLines = [
-  "Aspiring Web Developer with a strong",
-  "foundation in React.js, currently",
-  "expanding backend expertise in Node.",
-  "js and Express.js. Familiar with core",
-  "Java concepts and actively learning",
-  "Data Structures and to enhance",
-  "problem-solving abilities."
-];
-
-const About = () => {
-  // Use arrays of refs initialized with null values
-  const headingRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const paragraphRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  // Helper to set refs in an array correctly
-  const setHeadingRef = (el: HTMLDivElement | null, index: number) => {
-    headingRefs.current[index] = el;
-  };
-
-  const setParagraphRef = (el: HTMLDivElement | null, index: number) => {
-    paragraphRefs.current[index] = el;
-  };
+const Page = () => {
+  const imageRef = useRef(null);
+  const textRef = useRef(null);
 
   useEffect(() => {
-    if (headingRefs.current.length > 0) {
-      gsap.fromTo(
-        headingRefs.current,
-        {
-          opacity: 0,
-          y: 40,
-          filter: 'blur(6px)',
-        },
-        {
-          opacity: 1,
-          y: 0,
-          filter: 'blur(0px)',
-          duration: 1,
-          stagger: 0.15,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: headingRefs.current[0],
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-    }
+    // Flower animation from left
+    gsap.from(imageRef.current, {
+      x: -300, // start from left
+      opacity: 0,
+      duration: 1.5,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: imageRef.current,
+        start: 'top 80%', // trigger when top of image hits 80% of viewport
+      },
+    });
 
-    if (paragraphRefs.current.length > 0) {
-      gsap.fromTo(
-        paragraphRefs.current,
-        {
-          opacity: 0,
-          y: 40,
-          filter: 'blur(6px)',
-        },
-        {
-          opacity: 1,
-          y: 0,
-          filter: 'blur(0px)',
-          duration: 1,
-          stagger: 0.2,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: paragraphRefs.current[0],
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-    }
+    // Text animation (fade + slight upward movement)
+    gsap.from(textRef.current, {
+      y: 50,
+      opacity: 0,
+      duration: 1.2,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: textRef.current,
+        start: 'top 80%',
+      },
+    });
   }, []);
 
   return (
-    <div className="mt-20 flex flex-col justify-center items-center mb-20 px-4" id="about">
-      {/* Heading */}
-      <div
-        className="text-[20px] md:text-[78px] tracking-tighter text-[#181818] md:w-[1200px] leading-tight font-arimo"
-        style={{ fontFamily: 'var(--font-arimo)' }}
-      >
-        {headingLines.map((line, index) => (
-          <div
-            key={index}
-            ref={(el) => setHeadingRef(el, index)}
-            className="overflow-hidden"
-          >
-            <span className="inline-block">{line}</span>
-          </div>
-        ))}
+    <div>
+      <div className="md:ml-[700px] ml-[200px]">
+        <PlusLine />
       </div>
-
-      <div className="uppercase text-[12px] md:text-[13px] mt-20 md:w-[400px] md:ml-[550px] text-[#302e2e] font-medium">
-        {paragraphLines.map((line, index) => (
-          <div
-            key={index}
-            ref={(el) => setParagraphRef(el, index)}
-            className="overflow-hidden"
+      <div className="flex flex-col md:flex-row">
+        <div className="relative w-[300px] h-[300px] md:w-[900px] md:h-[900px]" ref={imageRef}>
+          <Image
+            src={flower}
+            fill
+            className="object-fill rotate-90"
+            placeholder="blur"
+            alt="Flower"
+          />
+        </div>
+        <div
+          className="flex flex-col p-2 md:p-0 items-center justify-center md:ml-30 md:items-start text-center md:text-left max-w-2xl"
+          ref={textRef}
+        >
+          <h1
+            className="text-[20px] md:text-[78px] tracking-tighter text-[#181818] md:w-[1200px] leading-tight font-arimo"
+            style={{ fontFamily: 'var(--font-arimo)' }}
           >
-            <span className="inline-block">{line}</span>
-          </div>
-        ))}
+            Jeganathan
+          </h1>
+          <p className="text-sm text-[#333333] leading-relaxed uppercase">
+            I’m a Full Stack Developer with strong expertise in the MERN stack. I’m passionate about building scalable web applications and delivering efficient solutions. Alongside full-stack development, I’m sharpening my Data Structures and Algorithms (DSA) in Java, while also exploring and learning other backend technologies to expand my knowledge. I constantly work on improving my skills and staying up to date with modern development practices to become a well-rounded software engineer.
+          </p>
+        </div>
       </div>
     </div>
   );
 };
 
-export default About;
+export default Page;

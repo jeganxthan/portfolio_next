@@ -101,20 +101,22 @@ const Hero: React.FC = () => {
     };
   }, [loadingComplete]);
 
-  const handleScroll = (e: React.MouseEvent<HTMLSpanElement>) => {
-    e.preventDefault();
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      gsap.to(window, {
-        duration: 2,
-        scrollTo: {
-          y: aboutSection,
-          offsetY: 0,
-        },
-        ease: 'power2.inOut',
-      });
-    }
-  };
+// Update function to accept a sectionId
+const handleScroll = (e: React.MouseEvent<HTMLSpanElement>, sectionId: string) => {
+  e.preventDefault();
+  const section = document.getElementById(sectionId);
+  if (section) {
+    gsap.to(window, {
+      duration: 2,
+      scrollTo: {
+        y: section,
+        offsetY: 0,
+      },
+      ease: 'power2.inOut',
+    });
+  }
+};
+
 
   return (
     <div className="relative h-full video-text-wrapper overflow-hidden" id="home">
@@ -140,7 +142,7 @@ const Hero: React.FC = () => {
                 }}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                onClick={handleScroll}
+                onClick={(e) => handleScroll(e, 'about')} 
                 className="hover:text-gray-400 cursor-pointer"
               >
                 ABOUT
@@ -151,7 +153,7 @@ const Hero: React.FC = () => {
           <h2 className="text-center md:text-left w-full text-xl md:w-auto md:mt-0 mt-6 tracking-widest font-medium p-4">JEGANATHAN</h2>
 
           <div className="space-x-8 hidden md:flex p-4" ref={navbarRef} style={{ opacity: 0 }}>
-            <a href="#services" className="hover:text-gray-400 text-sm font-semibold">
+            <a href="#projects" className="hover:text-gray-400 text-sm font-semibold">
               <span
                 ref={el => {
                   linksRef.current[2] = el;
@@ -159,7 +161,7 @@ const Hero: React.FC = () => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 style={{ cursor: 'pointer' }}
-                onClick={handleScroll}
+               onClick={(e) => handleScroll(e, 'projects')} 
               >
                 PROJECTS
               </span>
@@ -172,7 +174,7 @@ const Hero: React.FC = () => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 style={{ cursor: 'pointer' }}
-                onClick={handleScroll}
+                onClick={(e) => handleScroll(e, 'contact')} 
               >
                 CONTACT
               </span>
