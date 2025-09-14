@@ -122,7 +122,7 @@ const handleScroll = (e: React.MouseEvent<HTMLSpanElement>, sectionId: string) =
     <div className="relative h-full video-text-wrapper overflow-hidden" id="home">
       <div className="navbar">
         <div className="flex text-xs justify-between relative flex-row md:pt-4 md:px-6 text-slate-700 ">
-          <div className="space-x-8 hidden md:flex p-4" ref={navbarRef1} style={{ opacity: 0 }}>
+          <div className="space-x-8 hidden md:flex " ref={navbarRef1} style={{ opacity: 0 }}>
             <a href="#home" className="hover:text-gray-400 text-sm font-semibold">
               <span
                 ref={el => {
@@ -150,9 +150,9 @@ const handleScroll = (e: React.MouseEvent<HTMLSpanElement>, sectionId: string) =
             </a>
           </div>
 
-          <h2 className="text-center md:text-left w-full text-xl md:w-auto md:mt-0 mt-6 tracking-widest font-medium md:p-4">JEGANATHAN</h2>
+          <h2 className="text-center md:text-left w-full text-xl md:w-auto md:mt-0 mt-6 tracking-widest font-medium p-4">JEGANATHAN</h2>
 
-          <div className="space-x-8 hidden md:flex p-4" ref={navbarRef} style={{ opacity: 0 }}>
+          <div className="space-x-8 hidden md:flex" ref={navbarRef} style={{ opacity: 0 }}>
             <a href="#projects" className="hover:text-gray-400 text-sm font-semibold">
               <span
                 ref={el => {
