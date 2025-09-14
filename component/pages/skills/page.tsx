@@ -140,90 +140,90 @@ const Skills: React.FC = () => {
         onClick={() => setOpen(false)}
       >
         <div
-  className={`ml-auto h-full bg-[radial-gradient(circle,rgba(224,193,193,0.91)_0%,rgba(225,230,237,1)_100%)] shadow-lg w-[700px] transform transition-transform duration-300 ${open ? "translate-x-0" : "translate-x-full"
-    }`}
-  onClick={(e) => e.stopPropagation()}
->
-  {/* Header */}
-  <div className="flex justify-end items-center p-6">
-    <button
-      className="hover:cursor-pointer bg-white text-xs p-2 flex items-center gap-2 text-slate-700 font-medium"
-      onClick={() => setOpen(false)}
-      type="button"
-    >
-      <CornerUpLeft width={17} />
-      CLOSE
-    </button>
-  </div>
+          className={`ml-auto h-full bg-[radial-gradient(circle,rgba(224,193,193,0.91)_0%,rgba(225,230,237,1)_100%)] shadow-lg w-[700px] transform transition-transform duration-300 ${open ? "translate-x-0" : "translate-x-full"
+            }`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Header */}
+          <div className="flex justify-end items-center p-6">
+            <button
+              className="hover:cursor-pointer bg-white text-xs p-2 flex items-center gap-2 text-slate-700 font-medium"
+              onClick={() => setOpen(false)}
+              type="button"
+            >
+              <CornerUpLeft width={17} />
+              CLOSE
+            </button>
+          </div>
 
-  {/* Scrollable Content */}
-  <div className="px-6 pb-6 overflow-y-auto max-h-[calc(100vh-72px)]">
-    <PlusLine />
-    <div className="flex justify-center">
-      <p className="font-arimo text-3xl">ALL SKILLS</p>
-    </div>
-    <PlusLine />
+          {/* Scrollable Content */}
+          <div className="px-6 pb-6 overflow-y-auto max-h-[calc(100vh-72px)]">
+            <PlusLine />
+            <div className="flex justify-center">
+              <p className="font-arimo text-3xl">ALL SKILLS</p>
+            </div>
+            <PlusLine />
 
-    {/* Skills sections */}
-    <div className="uppercase mt-10 flex flex-col gap-8">
-      {/* Programming */}
-      <div>
-        <p className="mb-4">Programming</p>
-        <div className="flex flex-row gap-4 flex-wrap">
-          <Image src={java} width={70} height={70} alt="java" />
-          <Image src={python} width={70} height={70} alt="python" />
-          <Image src={js} width={70} height={70} alt="js" />
-          <Image src={ts} width={70} height={70} alt="ts" />
+            {/* Skills sections */}
+            <div className="uppercase mt-10 flex flex-col gap-8">
+              {/* Programming */}
+              <div>
+                <p className="mb-4">Programming</p>
+                <div className="flex flex-row gap-4 flex-wrap">
+                  <Image src={java} width={70} height={70} alt="java" />
+                  <Image src={python} width={70} height={70} alt="python" />
+                  <Image src={js} width={70} height={70} alt="js" />
+                  <Image src={ts} width={70} height={70} alt="ts" />
+                </div>
+              </div>
+
+              {/* Frontend */}
+              <div>
+                <p className="mb-4">Frontend</p>
+                <div className="flex flex-row gap-4 flex-wrap">
+                  <Image src={next} width={70} height={70} alt="next" />
+                  <Image src={vite} width={70} height={70} alt="vite" />
+                  <Image src={react} width={70} height={70} alt="react" />
+                  <Image src={tailwind} width={70} height={70} alt="tailwind" />
+                  <Image src={html} width={70} height={70} alt="html" />
+                  <Image src={css} width={70} height={70} alt="css" />
+                  <Image src={gsap} width={70} height={70} alt="gsap" />
+                </div>
+              </div>
+
+              {/* Backend */}
+              <div>
+                <p className="mb-4">Backend</p>
+                <div className="flex flex-row gap-4 flex-wrap">
+                  <Image src={node} width={70} height={70} alt="node" />
+                  <Image src={express} width={70} height={70} alt="express" />
+                  <Image src={firebase} width={70} height={70} alt="firebase" />
+                  <Image src={flask} width={70} height={70} alt="flask" />
+                  <Image src={socket} width={70} height={70} alt="socket" />
+                </div>
+              </div>
+
+              {/* Database */}
+              <div>
+                <p className="mb-4">Database</p>
+                <div className="flex flex-row gap-4 flex-wrap">
+                  <Image src={mongo} width={70} height={70} alt="mongo" />
+                </div>
+              </div>
+
+              {/* Tools */}
+              <div>
+                <p className="mb-4">Tools</p>
+                <div className="flex flex-row gap-4 flex-wrap">
+                  <Image src={linux} width={70} height={70} alt="linux" />
+                  <Image src={postman} width={70} height={70} alt="postman" />
+                  <Image src={git} width={70} height={70} alt="git" />
+                  <Image src={docker} width={70} height={70} alt="docker" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      {/* Frontend */}
-      <div>
-        <p className="mb-4">Frontend</p>
-        <div className="flex flex-row gap-4 flex-wrap">
-          <Image src={next} width={70} height={70} alt="next" />
-          <Image src={vite} width={70} height={70} alt="vite" />
-          <Image src={react} width={70} height={70} alt="react" />
-          <Image src={tailwind} width={70} height={70} alt="tailwind" />
-          <Image src={html} width={70} height={70} alt="html" />
-          <Image src={css} width={70} height={70} alt="css" />
-          <Image src={gsap} width={70} height={70} alt="gsap" />
-        </div>
-      </div>
-
-      {/* Backend */}
-      <div>
-        <p className="mb-4">Backend</p>
-        <div className="flex flex-row gap-4 flex-wrap">
-          <Image src={node} width={70} height={70} alt="node" />
-          <Image src={express} width={70} height={70} alt="express" />
-          <Image src={firebase} width={70} height={70} alt="firebase" />
-          <Image src={flask} width={70} height={70} alt="flask" />
-          <Image src={socket} width={70} height={70} alt="socket" />
-        </div>
-      </div>
-
-      {/* Database */}
-      <div>
-        <p className="mb-4">Database</p>
-        <div className="flex flex-row gap-4 flex-wrap">
-          <Image src={mongo} width={70} height={70} alt="mongo" />
-        </div>
-      </div>
-
-      {/* Tools */}
-      <div>
-        <p className="mb-4">Tools</p>
-        <div className="flex flex-row gap-4 flex-wrap">
-          <Image src={linux} width={70} height={70} alt="linux" />
-          <Image src={postman} width={70} height={70} alt="postman" />
-          <Image src={git} width={70} height={70} alt="git" />
-          <Image src={docker} width={70} height={70} alt="docker" />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
       </div>
     </div>

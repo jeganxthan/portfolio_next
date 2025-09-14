@@ -21,7 +21,7 @@ const Page = () => {
       ease: 'power3.out',
       scrollTrigger: {
         trigger: imageRef.current,
-        start: 'top 80%', // trigger when top of image hits 80% of viewport
+        start: 'top 80%',
       },
     });
 
@@ -39,7 +39,7 @@ const Page = () => {
   }, []);
 
   return (
-    <div>
+    <div id='about'>
       <div className="md:ml-[700px] ml-[200px]">
         <PlusLine />
       </div>

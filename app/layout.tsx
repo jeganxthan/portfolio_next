@@ -16,8 +16,8 @@ const arimo = Arimo({
 });
 
 export const metadata = {
-  title: 'PORTFOLIO',
-  description: 'fullstack portfolio!!',
+  title: 'Jeganathan',
+  description: 'Fullstack developer!!',
 };
 
 interface RootLayoutProps {
